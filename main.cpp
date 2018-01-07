@@ -4,6 +4,6 @@
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE prevInstance, PSTR cmdLine, int showCmd)
 {
-	Pong* pong = new Pong(800, 600);
-	return Win32App::Run(pong, hInstance, showCmd);
+    Pong* pong = new Pong(L"Pong", 800, 600);
+    return Win32App::Run(pong, hInstance, showCmd);
 }

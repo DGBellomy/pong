@@ -1,38 +1,42 @@
 #pragma once
 
+#include "Game.h"
+
 struct PongBall
 {
-	POINT pos;
-	POINT dir;
-	int radius;
+    POINT pos;
+    POINT dir;
+    int radius;
 };
 
-class Pong
+class Pong : public Game
 {
 public:
-	Pong(int screen_width, int screen_height);
-	~Pong();
+    Pong(PWSTR title, int screen_width, int screen_height);
+    ~Pong();
 
-	virtual void Update();
-	virtual void Draw(HDC hdc);
-	virtual void KeyboardInput(int key);
-	void reset(HWND hWnd);
+    void Init() final;
+    void Update() final;
+    void LateUpdate() final;
+    void Draw(HDC hdc) final;
+    void KeyboardInput(int key) final;
+    void reset(HWND hWnd);
 
 private:
 
-	PongBall ball;
+    PongBall ball;
 
-	POINT viewport;
+    POINT viewport;
 
-	POINT left_paddle;
-	POINT right_paddle;
-	POINT* current_paddle;
+    POINT left_paddle;
+    POINT right_paddle;
+    POINT* current_paddle;
 
-	int half_paddle_width;
-	int half_paddle_height;
-	int padding;
-	int speed;
+    int half_paddle_width;
+    int half_paddle_height;
+    int padding;
+    int speed;
 
-	int left_player_score;
-	int right_player_score;
+    int left_player_score;
+    int right_player_score;
 };
